@@ -38,6 +38,30 @@ class Request{
  
         return $response['data'];
     }
+
+    private static function createCounty($data)
+    {
+        $client = new Client();
+        $response = $client->post('counties', $data);
+
+        return $response;
+    }
+
+    private static function updateCounty($id, $data)
+    {
+        $client = new Client();
+        $response = $client->put('counties/' . $id, $data);
+
+        return $response;
+    }
+
+    private static function deleteCounty($id)
+    {
+        $client = new Client();
+        $response = $client->delete('counties', $id);
+
+        return $response;
+    }
  
 }
  
