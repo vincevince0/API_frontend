@@ -4,7 +4,7 @@ namespace App\Html;
 class PageCounties extends AbstractPage {
     static function table(array $entities)
     {
-        echo '<h1>Megyék</h1>';
+        echo '<h1">Megyék</h1>';
         self::searchBar();
         echo '<table id="counties-table">';
         self::tableHead();
@@ -39,7 +39,7 @@ class PageCounties extends AbstractPage {
                                 name='btn-del-county'
                                 value='{$entity['id']}'
                                 title='Töröl'>
-                                <i class='fa fa-trash'></i>
+                                <i class='fa fa-trash'>Töröl</i>
                             </button>
                         </form>
                     </td>
@@ -56,7 +56,10 @@ class PageCounties extends AbstractPage {
             <th>Megnevezés</th>
             <th style="float: right; display: flex">
                 Művelet&nbsp;
-                <button></button>';
+                <button></button>
+             </th>'
+            ;
+            self::editor();
   
     }
 
@@ -68,9 +71,9 @@ class PageCounties extends AbstractPage {
                     <form name="county-editor" method="post" action="">
                     <input type="hidden" id="id" name="id">
                     <input type="search" id="name" name="name" placeholder="Megye" required>
-                    <button type="submit" id="btn-save-county" name="btn-save-county" title="Ment"><i class="fa fa-save"></i>
+                    <button type="submit" id="btn-save-county" name="btn-save-county" title="Ment"><i class="fa fa-save">Mentés</i>
                     </button>
-                    <button type="button" id="btn-cancel-county" title="Mégse"><i class="fa fa-cancel"></i></button>
+                    <button type="button" id="btn-cancel-county" title="Mégse"><i class="fa fa-cancel">Mégse</i></button>
                     </form>
                     </th>
         

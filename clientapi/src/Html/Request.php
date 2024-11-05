@@ -28,6 +28,12 @@ class Request{
             case isset($request['btn-counties']):
                 PageCounties::table(self::getCounties());
                 break;
+            case isset($request['btn-del-county']):
+                self::deleteCounty($id);
+            break;
+            case isset($request['btn-save-county']):
+                self::createCounty($id);
+            break;
         }
     }
  
@@ -60,7 +66,7 @@ class Request{
         $client = new Client();
         $response = $client->delete('counties', $id);
 
-        return $response;
+        header("refresh:0");
     }
  
 }

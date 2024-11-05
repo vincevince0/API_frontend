@@ -15,6 +15,7 @@ abstract class AbstractPage implements PageInterface
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>Posta</title>
+            <link rel="stylesheet" href="style.css">
         </head>';  
     }
  
