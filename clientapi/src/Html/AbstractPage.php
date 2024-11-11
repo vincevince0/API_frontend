@@ -8,16 +8,18 @@ abstract class AbstractPage implements PageInterface
 {
  
     static function head(){
-        echo'
+        echo '
         <!doctype html>
-        <html land="hu-hu">
+        <html lang="hu-hu">
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Posta</title>
-            <link rel="stylesheet" href="style.css">
-        </head>';  
+            <title>Megyék</title>
+            <link rel="stylesheet" href="style.css"> <!-- Frissített link -->
+        </head>
+        ';
     }
+    
  
     static function nav()
     {
@@ -66,4 +68,3 @@ abstract class AbstractPage implements PageInterface
             </button>';
     }
 }
-?>

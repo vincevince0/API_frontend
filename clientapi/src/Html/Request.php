@@ -13,6 +13,11 @@ class Request{
                 self::postRequest();
                 break;
             case "GET":
+                self::getCounties();
+                break;
+            case "DELETE":
+                self::deleteCounty($id);
+                break;
             default:
                 self::getCounties();
                 break;
@@ -33,6 +38,9 @@ class Request{
             break;
             case isset($request['btn-save-county']):
                 self::createCounty($id);
+            break;
+            case isset($request['btn-update-county']):
+                self::updateCounty($id, $data);
             break;
         }
     }

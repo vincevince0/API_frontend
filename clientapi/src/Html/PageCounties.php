@@ -4,7 +4,7 @@ namespace App\Html;
 class PageCounties extends AbstractPage {
     static function table(array $entities)
     {
-        echo '<h1">Megyék</h1>';
+        echo '<h1>Megyék</h1>';
         self::searchBar();
         echo '<table id="counties-table">';
         self::tableHead();
@@ -18,7 +18,7 @@ class PageCounties extends AbstractPage {
             $i = 0;
             foreach ($entities as $entity) {
                 $onClick = sprintf(
-                    'btnEditCountyOnClick(%d, "%s")',
+                    'btn-update-county(%d, "%s")',
                     $entity['id'],
                     $entity['name']
                 );
@@ -28,10 +28,10 @@ class PageCounties extends AbstractPage {
                     <td>{$entity['name']}</td>
                     <td class='flex float-right'>
                         <button type='button'
-                            id='btn-edit-{$entity['id']}'
+                            id='btn-update-county-{$entity['id']}'
                             onclick='$onClick'
                             title='Módosít'>
-                            <i class='fa fa-edit'></i>
+                            <i class='fa fa-edit'>Módosítás</i>
                         </button>
                         <form method='post' action=''>
                             <button type='submit'
@@ -54,14 +54,17 @@ class PageCounties extends AbstractPage {
         <tr>
             <th class="id-col">#</th>
             <th>Megnevezés</th>
-            <th style="float: right; display: flex">
-                Művelet&nbsp;
-                <button></button>
-             </th>'
+            <th>Műveletek&nbsp</th>
+            '
             ;
             self::editor();
   
     }
+    //<button>Művelet</button>
+
+    //<th style="float: left;>
+    //Művelet&nbsp;
+    //</th>
 
     static function editor()
     {
