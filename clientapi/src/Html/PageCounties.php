@@ -27,12 +27,14 @@ class PageCounties extends AbstractPage {
                     <td>{$entity['id']}</td>
                     <td>{$entity['name']}</td>
                     <td class='flex float-right'>
-                        <button type='button'
+                    <form method='post' action=''>
+                        <button type='submit'
                             id='btn-update-county-{$entity['id']}'
                             onclick='$onClick'
                             title='Módosít'>
                             <i class='fa fa-edit'>Módosítás</i>
                         </button>
+                        </form>
                         <form method='post' action=''>
                             <button type='submit'
                                 id='btn-del-county-{$entity['id']}'

@@ -29,17 +29,19 @@ class Request{
         $request = $_REQUEST;
         switch ($request) {
             case isset($request['btn-home']):
+                echo 'Ez itt a kezdőlap.';
                 break;
             case isset($request['btn-counties']):
                 PageCounties::table(self::getCounties());
                 break;
             case isset($request['btn-del-county']):
-                self::deleteCounty($id);
+                self::deleteCounty();
             break;
             case isset($request['btn-save-county']):
                 self::createCounty($id);
             break;
             case isset($request['btn-update-county']):
+                self::editor();
                 self::updateCounty($id, $data);
             break;
         }
@@ -69,10 +71,11 @@ class Request{
         return $response;
     }
 
-    private static function deleteCounty($id)
+    private static function deleteCounty()
     {
+        $requestData = $_POST["btn-del-county"];
         $client = new Client();
-        $response = $client->delete('counties', $id);
+        $response = $client->delete('counties', $requestData);
 
         header("refresh:0");
     }
