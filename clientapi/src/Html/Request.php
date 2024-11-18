@@ -16,7 +16,7 @@ class Request{
                 self::getCounties();
                 break;
             case "DELETE":
-                self::deleteCounty($id);
+                self::deleteCounty();
                 break;
             default:
                 self::getCounties();
@@ -38,11 +38,13 @@ class Request{
                 self::deleteCounty();
             break;
             case isset($request['btn-save-county']):
-                self::createCounty($id);
+                $data = ['name' => $_POST['name']];
+                //var_dump($_POST);
+                self::createCounty($data);
             break;
             case isset($request['btn-update-county']):
                 self::editor();
-                self::updateCounty($id, $data);
+                self::updateCounty( );
             break;
         }
     }
@@ -57,11 +59,17 @@ class Request{
 
     private static function createCounty($data)
     {
-        $client = new Client();
-        $response = $client->post('counties', $data);
+    $name = $_POST['name']; 
+    
+    $client = new Client();
+    $response = $client->post('counties', ['name' => $name]);
 
-        return $response;
+    if ($response && isset($response['data'])) {
+        
+        PageCounties::table(self::getCounties());
     }
+    }
+
 
     private static function updateCounty($id, $data)
     {

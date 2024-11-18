@@ -65,6 +65,7 @@ abstract class AbstractPage implements PageInterface
                 name="btn-search"
                 title="Keres"
                 >Keresés
-            </button>';
+            </button>
+            </form>';
     }
 }

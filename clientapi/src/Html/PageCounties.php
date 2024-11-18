@@ -18,7 +18,7 @@ class PageCounties extends AbstractPage {
             $i = 0;
             foreach ($entities as $entity) {
                 $onClick = sprintf(
-                    'btn-update-county(%d, "%s")',
+                    'btnEditCountyOnClick(%d, "%s")',
                     $entity['id'],
                     $entity['name']
                 );
@@ -68,21 +68,36 @@ class PageCounties extends AbstractPage {
     //Művelet&nbsp;
     //</th>
 
+
     static function editor()
+{
+    echo '
+        <th>&nbsp;</th>
+        <th>   
+            <form name="county-editor" method="post" action="">
+                <input type="hidden" id="id" name="id">
+                <input type="text" id="name" name="name" placeholder="Megye" required>
+                <button type="submit" id="btn-save-county" name="btn-save-county" title="Ment"><i class="fa fa-save">Mentés</i>
+                </button>
+                <button type="button" id="btn-cancel-county" title="Mégse"><i class="fa fa-cancel">Mégse</i></button>
+            </form>
+        </th>
+    ';
+}
+    public function searchCounty($needle)
     {
-        echo '
-                <th>&nbsp;</th>
-                <th>   
-                    <form name="county-editor" method="post" action="">
-                    <input type="hidden" id="id" name="id">
-                    <input type="search" id="name" name="name" placeholder="Megye" required>
-                    <button type="submit" id="btn-save-county" name="btn-save-county" title="Ment"><i class="fa fa-save">Mentés</i>
-                    </button>
-                    <button type="button" id="btn-cancel-county" title="Mégse"><i class="fa fa-cancel">Mégse</i></button>
-                    </form>
-                    </th>
-        
-        ';
+        $sql = "SELECT * FROM counties WHERE (county) LIKE '%$needle%'";
+        $stmt = $this->mysqli->prepare($sql);
+       $result =$this->mysqli->query($sql);
+      
+       if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $counties[] = $row;
+        }
+       }
+
+       return $counties;
     }
+
 }
 
